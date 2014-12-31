@@ -1,0 +1,39 @@
+{
+  "name": "oakjs",
+  "description": "a sample lightweight javascript MVVM framework.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hahaps/OakJS",
+  "author": {
+    "name": "Li Xipeng",
+    "email": "lixipeng@gohighedu.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hahaps/OakJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hahaps/OakJS/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/hahaps/OakJS/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/oakjs",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt": "~0.4.5"
+  },
+  "keywords": []
+}
