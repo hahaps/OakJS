@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script type="application/javascript" src="../../bower_components/jquery/jquery.min.js"></script>
+    <script type="application/javascript" src="../../src/oak.js"></script>
+    <script type="application/javascript" src="../../src/oak-render/oak-render.js"></script>
+</head>
+<body>
+
+<div id="test-render" class="{{className}}">
+    {{node.name=='aaa'?node.name:'cc'}} {{node.test}}
+    <div class="{{node.className}}" index="{{$index}}" oak-logic="for item in node.divs">
+      {{node.node.name}} === {{item.name}} === {{$index}}
+    </div>
+    <div oak-logic="for key, val in node.spans">
+      {{key}}, {{val}}
+    </div>
+</div>
+
+<script type="application/javascript">
+    var render = oak.lib.render;
+    var model = {
+      className: "class-a",
+      node: {
+          name: "name-aa",
+          className: "class-aa",
+          test: "<div 'aaa'>ccccccccc</div>",
+          node: {
+              name: "name-aaa",
+              className: "class-aaa"
+          },
+          divs: [
+            {name: "div-name1"},
+            {name: "div-name2"},
+            {name: "div-name3"}
+          ],
+          spans: {
+            t1: "span-name1",
+            t2: "span-name2",
+            t3: "span-name3"
+          }
+      }
+    };
+    render.rend($("#test-render"), model);
+</script>
+
+</body>
+</html>

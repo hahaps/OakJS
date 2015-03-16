@@ -1,0 +1,25 @@
+{
+  "name": "OakJS",
+  "version": "0.1",
+  "homepage": "https://github.com/hahaps/OakJS",
+  "authors": [
+    "Li Xipeng <lixipeng@hihuron.com>"
+  ],
+  "description": "A sample MVVM framework.",
+  "keywords": [
+    "sample",
+    "MVVM"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.9.1"
+  }
+}
