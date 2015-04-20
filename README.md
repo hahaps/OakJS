@@ -53,5 +53,5 @@ _Also, please don't edit files in the "dist" subdirectory as they are generated 
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2014 Li Xipeng  
+Copyright (c) 2014 Lv Shuang, Li Xipeng  
 Licensed under the MIT license.
