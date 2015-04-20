@@ -3,40 +3,6 @@
 a sample lightweight javascript MVVM framework.
 
 ## Getting Started
-### On the server
-Install the module with: `npm install oakjs`
-
-```javascript
-var oakjs = require('oakjs');
-oakjs.awesome(); // "awesome"
-```
-
-### In the browser
-Download the [production version][min] or the [development version][max].
-
-[min]: https://raw.github.com/hahaps/OakJS/master/dist/oakjs.min.js
-[max]: https://raw.github.com/hahaps/OakJS/master/dist/oakjs.js
-
-In your web page:
-
-```html
-<script src="dist/oakjs.min.js"></script>
-<script>
-awesome(); // "awesome"
-</script>
-```
-
-In your code, you can attach oakjs's methods to any object.
-
-```html
-<script>
-var exports = Bocoup.utils;
-</script>
-<script src="dist/oakjs.min.js"></script>
-<script>
-Bocoup.utils.awesome(); // "awesome"
-</script>
-```
 
 ## Documentation
 _(Coming soon)_
