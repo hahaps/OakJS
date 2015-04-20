@@ -15,7 +15,7 @@
      * This object is used to provide extend method.
      */
     oak.extend = {
-        define: function(lib, func) {
+        define: function(lib, arr, func) {
             oak.lib[lib] = func();
         },
         inherit: function(lib, requirements, func) {
@@ -26,10 +26,10 @@
         }
     };
     // Add jQuery/$ object in to oak lib.
-    oak.extend.define('$', function() {
+    oak.extend.define('$', [], function() {
         return jQuery;
     });
-    oak.extend.define('jQuery', function() {
+    oak.extend.define('jQuery', [], function() {
         return jQuery;
     });
 })(window, document, jQuery);

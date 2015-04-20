@@ -5,11 +5,14 @@
     <title></title>
     <script type="application/javascript" src="../../bower_components/jquery/jquery.min.js"></script>
     <script type="application/javascript" src="../../src/oak.js"></script>
+    <script type="application/javascript" src="../../src/oak-utils/oak-utils.js"></script>
     <script type="application/javascript" src="../../src/oak-render/oak-render.js"></script>
+    <script type="application/javascript" src="../../src/oak-binding/oak-binding.js"></script>
+    <script type="application/javascript" src="../../src/oak-mvvm/oak-mvvm.js"></script>
 </head>
 <body>
-
-<div id="test-render" class="{{className}}">
+<div id="test-aaa">tttttttttttttttttttttttttt</div>
+<div id="test-render" class="{{className}}" test="vvv">
     {{node.name=='aaa'?node.name:'cc'}} {{node.test}}
     <div class="{{node.className}}" index="{{$index}}" oak-logic="for item in node.divs">
       {{node.node.name}} === {{item.name}} === {{$index}}
@@ -20,7 +23,7 @@
 </div>
 
 <script type="application/javascript">
-    var render = oak.lib.render;
+    var mvvm = oak.lib.mvvm;
     var model = {
       className: "class-a",
       node: {
@@ -43,7 +46,17 @@
           }
       }
     };
-    render.rend($("#test-render"), model);
+    var conter = 0;
+    var id = setInterval(function() {
+        model.name += 'a'
+        mvvm.vm($("#test-render"), model);
+        if(conter === 5) {
+            clearInterval(id);
+        }
+        console.log("times " + conter);
+        conter += 1;
+    }, 5000);
+
 </script>
 
 </body>
