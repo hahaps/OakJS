@@ -23,7 +23,7 @@
 </div>
 
 <script type="application/javascript">
-    var mvvm = oak.lib.mvvm;
+    var render = oak.lib.render;
     var model = {
       className: "class-a",
       node: {
@@ -46,16 +46,7 @@
           }
       }
     };
-    var conter = 0;
-    var id = setInterval(function() {
-        model.name += 'a'
-        mvvm.vm($("#test-render"), model);
-        if(conter === 5) {
-            clearInterval(id);
-        }
-        console.log("times " + conter);
-        conter += 1;
-    }, 5000);
+    render.rend($("#test-render"), model);
 
 </script>
 

@@ -145,14 +145,15 @@
             _contextRend: function(text, model, tag) {
                 return _utils._matchAndReplace(text, tag, model);
             },
-            _render_use_shadow: function(dom, model, options) {
-                var finder = $(dom).data('oak-data'),
-                    tag = options.compileTag || _utils.defaultCompileTag;
+            _render_use_shadow: function(dom, model, finder, options) {
+                var tag = options.compileTag || _utils.defaultCompileTag;
+                $(dom).data('oak-data', '');
                 finder = _utils._render_shadow(dom, model, finder, tag, options);
                 return finder;
             },
             _render_shadow: function(dom, model, finder, tag, options) {
-                var attrs = finder.attr || {},
+                // This will be improve latter!!!
+                /*var attrs = finder.attr || {},
                     contexts = finder.context || {},
                     children = dom.childNodes,
                     nodes = finder.node || {};
@@ -177,7 +178,10 @@
                         nodes[node].node = _utils._render_shadow(children[index], model, nodes[node].node, tag, options);
                     }
                 }
-                finder.node = nodes;
+                finder.node = nodes;*/
+                $(dom).html(finder.html);
+                options.use_shadow = false;
+                finder = _utils.render(dom, model, options);
                 return finder;
             },
             /**
@@ -192,15 +196,19 @@
              */
             render: function(dom, model, options) {
                 options = options || {};
-                var use_shadow = options.use_shadow || false,
-                    selector = options.selector ||  '',
-                    finder = {
+                var finder = $(dom).data('oak-data'),
+                    use_shadow = finder ? true : false,
+                    selector = options.selector ||  '';
+                if(use_shadow) {
+                    return _utils._render_use_shadow(dom, model, finder, options);
+                }
+                if(!use_shadow) {
+                  finder = {
+                        html: $(dom).html(),
                         attr: {},
                         context: {},
                         node: {}
-                };
-                if(use_shadow) {
-                    return _utils._render_use_shadow(dom, model, options);
+                  };
                 }
                 var $dom = $(dom),
                     attrs = dom.attributes,

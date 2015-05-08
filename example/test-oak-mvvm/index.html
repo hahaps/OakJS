@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script type="application/javascript" src="../../bower_components/jquery/jquery.min.js"></script>
+    <script type="application/javascript" src="../../src/oak.js"></script>
+    <script type="application/javascript" src="../../src/oak-utils/oak-utils.js"></script>
+    <script type="application/javascript" src="../../src/oak-render/oak-render.js"></script>
+    <script type="application/javascript" src="../../src/oak-binding/oak-binding.js"></script>
+    <script type="application/javascript" src="../../src/oak-mvvm/oak-mvvm.js"></script>
+</head>
+<body>
+
+  <table width="100%" border="1">
+    <thead>
+      <tr>
+        <th>UUID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody id="test-vm">
+      <tr oak-logic="for stu in students">
+        <td>{{stu.uuid}}</td>
+        <td>{{stu.name}}</td>
+        <td>{{stu.gender}}</td>
+        <td>{{stu.age}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="text-align: right;">
+          <span id="next" style="color: blue; cursor: pointer;">Previous</span>&nbsp;&nbsp;&nbsp;
+          <span id="previous" style="color: blue; cursor: pointer;">Next</span>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+<script type="application/javascript">
+    var mvvm = oak.lib.mvvm;
+    mvvm.vm($("#test-vm"), function() {
+        var model = {students: [{
+          uuid: 'students--1', name: 'Ray', gender: 'G', age: 12
+        }, {
+          uuid: 'students--2', name: 'Ray2', gender: 'G', age: 13
+        }, {
+          uuid: 'students--3', name: 'Ray3', gender: 'G', age: 13
+        }, {
+          uuid: 'students--4', name: 'Ray4', gender: 'G', age: 13
+        }, {
+          uuid: 'students--5', name: 'Ray5', gender: 'G', age: 13
+        }]};
+        this.$data = model;
+        var page_cout = 1;
+        var max_page = model.students.length;
+        console.log(max_page);
+        $("#previous").click(function() {
+            page_cout += 1;
+            if(page_cout < max_page) {
+              model.students[0].age += 1;
+              model.students[1].age += 1;
+              model.students[2].age += 1;
+              model.students[3].age += 1;
+              model.students[4].age += 1;
+            } else {
+              page_cout -= 1;
+              alert("Last page");
+            }
+        });
+        $("#next").click(function() {
+            page_cout -= 1;
+            if(page_cout >= 0) {
+              model.students[0].age -= 1;
+              model.students[1].age -= 1;
+              model.students[2].age -= 1;
+              model.students[3].age -= 1;
+              model.students[4].age -= 1;
+            } else {
+              page_cout += 1;
+              alert("First page");
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>
