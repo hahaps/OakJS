@@ -282,7 +282,7 @@
              * @param {object} tag a list with start and end tag.
              */
             setCompileTag: function (tag) {
-                if (!(tag && typeof tag[0] === "string" && typeof tag[1] === "string")) {
+                if (tag && typeof tag[0] === "string" && typeof tag[1] === "string") {
                     if (oak.lib && oak.lib.render) {
                         oak.lib.render.compileTag = tag;
                     }
@@ -305,9 +305,8 @@
                     // TODO(Li Xipeng): raise error.
                     return ;
                 }
-                var options = {
-                    compileTag: oak.lib && oak.lib.compileTag ? oak.lib.compileTag : _utils.defaultCompileTag
-                };
+                opts = opts || {};
+                opts.compileTag = oak.lib && oak.lib.render && oak.lib.compileTag ? oak.lib.render.compileTag : _utils.defaultCompileTag
                 var finder = _utils.render(dom, model, opts);
                 $(dom).data('oak-data', finder);
             }
